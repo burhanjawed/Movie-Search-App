@@ -1,0 +1,49 @@
+.searchMovies__form {
+  display: grid;
+
+  @media screen and (min-width: 786px) {
+    grid-template-columns: auto 1fr auto;
+    grid-gap: 1rem;
+    align-items: center;
+  }
+
+  .searchMovies__label {
+    font-size: 1.2rem;
+    margin-bottom: 0.2rem;
+    text-transform: uppercase;
+  }
+
+  .searchMovies__input {
+    font-size: 1.6rem;
+    font-family: var(--font-base);
+    padding: 0.5rem 2rem;
+    line-height: 2.8rem;
+    border-radius: 30px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 1rem;
+
+    @media screen and (min-width: 786px) {
+      margin-bottom: 0;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .searchMovies__button {
+    background-color: var(--lightGray-color);
+    color: white;
+    padding: 1rem 2rem;
+    font-family: var(--font-base);
+    font-size: 1.4rem;
+    border: 1px solid var(--lightGray-color);
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 250ms;
+
+    &:hover {
+      background-color: var(--darkGray-color);
+    }
+  }
+}

@@ -3,13 +3,12 @@
 
   // theme colors
   --background-color: rgb(244, 244, 244);
-  --darkGray-color: #bebbb4;
-  --lightGray-color: #e6e5e0;
-  --gray-color: #d5d4cf;
   --white-color: #ffffff;
   --black-color: #000000;
-  --darkBlue-color: #232c31;
+  --lightGray-color: rgba(0, 0, 0, 0.75);
+  --darkGray-color: rgba(0, 0, 0, 0.85);
   --font-color: #333;
+  --border-color: #ddd;
 
   // Font sizes
   --paragraphText-size: 1.6rem;
