@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
-import { MovieCards } from '../../components';
+import { MovieCards, Loading } from '../../components';
 import axios from 'axios';
 import './SearchMovies.scss';
 
 const SearchMovies = () => {
   const [movieQuery, setMovieQuery] = useState('');
   const [movies, setMovies] = useState([]);
+  const [movieQueried, setMovieQueried] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
   // fetch movie list based on search query
   const searchMovies = (event) => {
     event.preventDefault();
     console.log('submitting');
+    setMovieQueried(true);
 
     const url = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&query=${movieQuery}&page=1&include_adult=false`;
 
@@ -18,6 +21,7 @@ const SearchMovies = () => {
       .get(url)
       .then((resp) => {
         setMovies(resp.data.results);
+        setLoaded(true);
       })
       .catch((err) => {
         console.error(err);
@@ -44,7 +48,27 @@ const SearchMovies = () => {
         </button>
       </form>
 
-      <MovieCards movieData={movies} />
+      {loaded ? (
+        <>
+          {movies.length !== 0 ? (
+            <div className='searchMovies__card-list'>
+              {movies
+                .filter((movie) => movie.poster_path)
+                .map((movie) => {
+                  return <MovieCards movieData={movie} key={movie.id} />;
+                })}
+            </div>
+          ) : movieQueried ? (
+            <h1 className='searchMovies__card-NoMovieFound'>No movie found</h1>
+          ) : (
+            ''
+          )}
+        </>
+      ) : !movieQueried ? (
+        ''
+      ) : (
+        <Loading />
+      )}
     </>
   );
 };
