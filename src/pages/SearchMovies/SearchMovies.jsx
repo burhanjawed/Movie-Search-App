@@ -18,7 +18,6 @@ const SearchMovies = () => {
       .get(url)
       .then((resp) => {
         setMovies(resp.data.results);
-        console.log(JSON.stringify(resp.data.results, null, 2));
       })
       .catch((err) => {
         console.error(err);
