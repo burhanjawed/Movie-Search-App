@@ -3,7 +3,7 @@ import './MovieCards.scss';
 
 const MovieCards = ({ movieData }) => {
   return (
-    <div className='movieCards__card'>
+    <div className='movieCards__card' data-testid='displayCard'>
       <img
         src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${movieData.poster_path}`}
         alt='Movie Poster'
